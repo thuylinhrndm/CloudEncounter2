@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Encounter2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+<!--Navigation Bar-->
+<div class="header">
+<ul class="nav nav-pills pull-right">
+<% if current_user %>
+	<%= link_to "Sign Out", sign_out_path %>
+<% else %>
+	<%= link_to "Sign In with Google", '/auth/google_oauth2' %> |
+	<%= link_to "Sign In with Facebook", '/auth/facebook' %>
+<% end %>
+</ul>
+</span>
+</div>
+</div>
+
+<%= yield %>
+</div>
+</body>
+</html>
