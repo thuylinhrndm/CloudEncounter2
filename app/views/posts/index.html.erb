@@ -1,37 +1,27 @@
-<h1>Listing posts</h1>
+<h1>All Posts</h1>
 
 <table>
   <thead>
     <tr>
-      <th class="col-md-4">Title</th>
-      <th class="col-md-4">Description</th>
-      <th class="col-md-4"></th>
+      <th class="col-md-2">Title</th>
+      <th class="col-md-3">Description</th>
+      <th class="col-md-3">Date</th>
+      <th class="col-md-2">
+      <% if current_user %>
+      <% unless(current_user.role == "user" && controller.action_name == "index" )%>
+      Name
+      <% end %>
+      <% end %>
+      </th>
+      <th class="col-md-2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td>
-        <ul>
-          <li>
-             <%= link_to 'Show', post %>    
-          </li>
-          <li>
-            <%= link_to 'Edit', edit_post_path(post) %>    
-          </li>
-          <li>
-          <%= button_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
-        </ul>
-        </td>
-      </tr>
-    <% end %>
+      <%= render @posts %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= button_to 'Post Your Own Problem', new_post_path, class: 'small button round', method: :get %>

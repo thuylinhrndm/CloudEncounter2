@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
+  before_action :check_current_user_is_signed_in, except: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+
+  def my_posts
+    @posts = Post.where(user_id: current_user.id)
+  end
 
   # GET /posts
   # GET /posts.json
@@ -62,6 +67,20 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def check_current_user_is_signed_in
+      unless current_user_signed_in?
+        redirect_to root_url, notice: "Please sign in to do that"
+      end
+    end
+
+    def current_user_signed_in?
+        current_user ? true : false
+    end
+
+    def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
@@ -69,6 +88,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description)
+      params.require(:post).permit(:title, :description, :user_id)
     end
 end

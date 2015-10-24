@@ -1,0 +1,37 @@
+ <tr>
+        <td><%= post.title %></td>
+        <td><%= post.description %></td>
+        <td><%= post.created_at.strftime("%e %b %Y") %></td>
+        <td>
+        <% if current_user%>
+         <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
+          <% if post.user.nil? %>
+            <%= "No User" %>
+          <% else %>
+            <%= post.user.name %>
+          <% end %>
+        <% end %>
+        <% end %>
+        </td>
+        <td>
+        <% if current_user %>
+        <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
+        <ul>
+          <li>
+             <%= link_to 'Show', post %>    
+          </li>
+          <% unless current_user.role == 'consultant' %>
+          <li>
+            <%= link_to 'Edit', edit_post_path(post) %>    
+          </li>
+          <li>
+          <%= button_to 'Destroy', post, method: :delete, class: "button small round" %>
+        </li>
+        <% else %>
+        <%= button_to "Respond", "#" %>
+        <% end %>
+        </ul>
+        <% end %>
+        <% end %>
+        </td>
+      </tr>

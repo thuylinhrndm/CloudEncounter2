@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :answers
+
   get 'sessions/create'
 
   get 'sessions/destroy'
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts
+
+  get 'my_posts', to: 'posts#my_posts', as: 'my_posts'
 
  get 'auth/:provider/callback', to: 'sessions#create'
 
@@ -60,9 +64,9 @@ Rails.application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
-  #   namespace :admin do
+    # constraints {subdomain: 'api' } do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
+    # end
 end

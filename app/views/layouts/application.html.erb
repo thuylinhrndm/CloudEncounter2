@@ -1,40 +1,55 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Encounter2</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+    <title><%= content_for?(:title) ? yield(:title) : "Encounter2" %></title>
 
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <%= csrf_meta_tags %>
-</head>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "default" 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 <body>
-<div class="container">
 <!--Navigation Bar-->
-<div class="header">
-<ul class="nav nav-pills pull-right">
-<% if current_user %>
-	<%= link_to "Sign Out", sign_out_path %>
-<% else %>
-	<%= link_to "Sign In with Google", '/auth/google_oauth2' %> |
-	<%= link_to "Sign In with Facebook", '/auth/facebook' %>
-<% end %>
-</ul>
-</span>
-</div>
-</div>
+<nav class="top-bar">
+  
+<section class="top-bar-section">
+    <ul class="right">
+    <% if current_user %>
+        <li class="divider"></li>
+        <li class="name"><%= "Welcome #{current_user.name}!" %></li>
+        <li class="divider"></li>
+       <li class="name"><%= link_to "Sign Out", sign_out_path %></li>
+       <li class="divider"></li>
+     <% else %>
+      <li class="divider"></li>
+      <li><%= link_to "Sign In with Google", "/auth/google_oauth2" %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Sign In with Facebook", "/auth/facebook" %></li>
+      <li class="divider"></li>
+    <% end %>
+  </ul>
+  </section>
+</nav>
 
+<% if notice %>
+<p><%= notice %></p>
+<% end %>
+
+<!-- A user's toolbar for Posts -->
+<% if current_user %>
+<div class="row">
+<div class="small-9 columns"></div>
+  <div class="small-3 columns">
+		<%= link_to "All Posts", posts_path %> |
+		<%= link_to "My Posts", my_posts_path %>
+  </div>
+</div>
+<% end %>
+
+<div class="row">
 <%= yield %>
 </div>
 </body>

@@ -23,6 +23,10 @@
     <%= f.label :uid %><br>
     <%= f.text_field :uid %>
   </div>
+   <div class="field">
+    <%= f.label :role %><br>
+    <%= f.select :role, User::ROLES %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

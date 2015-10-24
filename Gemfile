@@ -14,9 +14,13 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+gem 'foundation-rails', '5.4.3.1'
+
+gem 'faker'
+
 gem "omniauth-google-oauth2" #Google API 
 
-gem 'omniauth-facebook' #Facebook API for Login
+gem 'omniauth-facebook', '1.4.0' #Facebook API for Login
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
