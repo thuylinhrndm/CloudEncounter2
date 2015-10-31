@@ -1,8 +1,9 @@
- <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.created_at.strftime("%e %b %Y") %></td>
-        <td>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <p><strong><%= post.title %></strong></p>
+        <p><%= post.created_at.strftime("%e %b %Y") %> </p>
+
         <% if current_user%>
          <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
           <% if post.user.nil? %>
@@ -12,26 +13,41 @@
           <% end %>
         <% end %>
         <% end %>
-        </td>
-        <td>
+
+        </p> 
+        <p> <%= post.description %></p>
         <% if current_user %>
         <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
-        <ul>
-          <li>
+        <ul class="inline-list">
+         <li>
              <%= link_to 'Show', post %>    
           </li>
           <% unless current_user.role == 'consultant' %>
           <li>
             <%= link_to 'Edit', edit_post_path(post) %>    
           </li>
+         
           <li>
           <%= button_to 'Destroy', post, method: :delete, class: "button small round" %>
-        </li>
+          </li>
         <% else %>
-        <%= button_to "Respond", "#" %>
+         <li>
+          <%= link_to  "Reply", "answers" %>
+        </li>
+
         <% end %>
         </ul>
         <% end %>
         <% end %>
-        </td>
-      </tr>
+        <h6>Answer</h6>
+          <div class="row">
+          <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
+          <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+     </div>
+    <hr/>
+    
+  </div>
+  
+
+
+

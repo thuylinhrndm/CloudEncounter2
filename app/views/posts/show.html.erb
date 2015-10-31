@@ -1,3 +1,4 @@
+<div class="large-9 columns">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -9,7 +10,37 @@
   <strong>Description:</strong>
   <%= @post.description %>
 </p>
+<% if current_user.role == 'consultant' %>
+<%= form_for(@answer) do |f| %>
+  
+	 <div class="field">
+	    <%= f.label :description %><br>
+	    <%= f.text_area :description %>
+	 </div>
+	 <div class="field">
+	    <%= f.hidden_field :user_id, value: current_user.id %>
+	 </div>
+	 <div class=”field”>
+		<%= f.hidden_field :post_id, value: @post.id %>
+	 </div>
+
+	 <div class=”field”>
+	    <%= f.submit "Post Answer" %>
+	 </div>
+<% end %>
+<% end %>
+
+<% if @post.answers.any? %>
+<% @post.answers.each do |answer| %>
+	<p><%= answer.description %></p>
+<% end %>
+<% end %>
+
+
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back to My Posts', my_posts_path %> |
 <%= link_to 'Back to All Posts', posts_path %>
+
+</div>

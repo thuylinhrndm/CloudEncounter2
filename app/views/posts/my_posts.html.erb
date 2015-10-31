@@ -1,21 +1,8 @@
-<h1>My Posts</h1>
+<h2 style="text-align: center">My Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th class="col-md-2">Title</th>
-      <th class="col-md-3">Description</th>
-      <th class="col-md-3">Date</th>
-      <th class="col-md-2">Name</th>
-      <th class="col-md-2"></th>
-    </tr>
-  </thead>
+<div class="large-9 columns"> 
+     <%= render @posts %>
+   
+  </div>
 
-  <tbody>
-    <%= render @posts %>
-  </tbody>
-</table>
 
-<br>
-
-<%= button_to 'Post Your Own Problem', new_post_path, class: 'btn btn-default', method: :get %>

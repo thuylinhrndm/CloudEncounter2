@@ -1,27 +1,13 @@
-<h1>All Posts</h1>
+  <div class="large-9 columns"> 
+  <h2 style="text-align: center">All Posts</h2>
+     <%= render @posts %>
+   
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th class="col-md-2">Title</th>
-      <th class="col-md-3">Description</th>
-      <th class="col-md-3">Date</th>
-      <th class="col-md-2">
-      <% if current_user %>
-      <% unless(current_user.role == "user" && controller.action_name == "index" )%>
-      Name
-      <% end %>
-      <% end %>
-      </th>
-      <th class="col-md-2"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-      <%= render @posts %>
-  </tbody>
-</table>
+  
 
-<br>
 
-<%= button_to 'Post Your Own Problem', new_post_path, class: 'small button round', method: :get %>
+
+
+
