@@ -10,12 +10,14 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @answer = Answer.new
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
    @answer = Answer.new
+   respond_to :html, :js
   end
 
   # GET /posts/new

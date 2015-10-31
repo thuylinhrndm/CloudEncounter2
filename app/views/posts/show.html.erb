@@ -14,8 +14,7 @@
 <%= form_for(@answer) do |f| %>
   
 	 <div class="field">
-	    <%= f.label :description %><br>
-	    <%= f.text_area :description %>
+	    <%= f.text_area :description, rows: 3 %>
 	 </div>
 	 <div class="field">
 	    <%= f.hidden_field :user_id, value: current_user.id %>
@@ -30,10 +29,18 @@
 <% end %>
 <% end %>
 
+<br />
+
+
 <% if @post.answers.any? %>
-<% @post.answers.each do |answer| %>
-	<p><%= answer.description %></p>
-<% end %>
+
+	<p>Answers</p>
+
+		<% @post.answers.each do |answer| %>
+			<p>From: <%= answer.user.name %></p>
+			<p><%= answer.description %></p>
+		<% end %>
+
 <% end %>
 
 

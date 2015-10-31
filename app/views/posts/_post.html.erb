@@ -20,7 +20,7 @@
         <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
         <ul class="inline-list">
          <li>
-             <%= link_to 'Show', post %>    
+             <%= link_to 'Reply', post, id: "reply_link", class: 'small button round', remote: true %>    
           </li>
           <% unless current_user.role == 'consultant' %>
           <li>
@@ -30,20 +30,28 @@
           <li>
           <%= button_to 'Destroy', post, method: :delete, class: "button small round" %>
           </li>
-        <% else %>
-         <li>
-          <%= link_to  "Reply", "answers" %>
-        </li>
-
         <% end %>
         </ul>
         <% end %>
         <% end %>
-        <h6>Answer</h6>
+        <%= render partial: 'layouts/reply', locals: {post: post}%>
+        <% if post.answers.any? %>
+        <h4><%= post.answers.count %> Answers</h4>
+        <% post.answers.each do |answer| %>
           <div class="row">
-          <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
-          <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-     </div>
+            <div class="large-2 columns small-3">
+            <img src="http://placehold.it/50x50&text=[img]"/>
+            </div>  
+            <div class="large-10 columns">
+            <p>
+              <%= answer.description %>
+            </p>
+          </div>
+          </div>
+          <br />
+          <% end %>
+          <% end %>
+     
     <hr/>
     
   </div>
