@@ -17,7 +17,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
    @answer = Answer.new
-   respond_to :html, :js
   end
 
   # GET /posts/new

@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /answers
   # GET /answers.json
@@ -15,6 +16,12 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+    if request.xhr?
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    end
   end
 
   # GET /answers/1/edit

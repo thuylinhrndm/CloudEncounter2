@@ -20,7 +20,11 @@
         <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
         <ul class="inline-list">
          <li>
-             <%= link_to 'Reply', post, id: "reply_link", class: 'small button round', remote: true %>    
+         <div id="reply_link">
+             <%= link_to new_answer_path, remote: true, method: :get do %>
+             <button class="small button round">Reply Button</button>
+             <% end %>
+             </div>    
           </li>
           <% unless current_user.role == 'consultant' %>
           <li>
@@ -34,7 +38,9 @@
         </ul>
         <% end %>
         <% end %>
+        <div id="reply_box">
         <%= render partial: 'layouts/reply', locals: {post: post}%>
+        </div>
         <% if post.answers.any? %>
         <h4><%= post.answers.count %> Answers</h4>
         <% post.answers.each do |answer| %>
