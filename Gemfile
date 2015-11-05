@@ -33,6 +33,7 @@ gem 'omniauth-facebook', '1.4.0' #Facebook API for Login
 
 gem 'responders'
 
+gem 'google-api-client', '~> 0.7.0', require: 'google/api_client'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
