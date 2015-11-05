@@ -66,26 +66,22 @@
     </section>
     <hr/>
     <section class="section">
-    <h5 class="active"><%= link_to "My Responses", "#" %></h5>
-    </section>
-    <hr/>
-    <section class="section">
     <%= button_to 'Post Your Own Problem', new_post_path, class: 'small button round', method: :get %>
     </section>
-
+    </div>
   </div>
   </div>
 
   
 
-
+<div class="row">
 <% if notice %>
 <span class="label"><%= notice %></span>
 <% end %>
+</div>
+
 
 <%= yield %>
-
-</div>
 
 
 
