@@ -26,6 +26,10 @@
     <% if current_user %>
       <li class="divider"></li>
       <li class="name"><%= link_to "Welcome #{current_user.name}!", "#" %></li>
+      <% if current_user.role %>
+      <li class="divider"></li>
+      <li class="name"><%= content_tag(:a, current_user.role ? "#{current_user.role.capitalize}" : "") %></li>
+      <% end %>
       <li class="divider"></li>
       <li class="name"><%= link_to "Sign Out", sign_out_path %></li>
       <li class="divider"></li>
@@ -66,22 +70,26 @@
     </section>
     <hr/>
     <section class="section">
+    <h5 class="active"><%= link_to "My Responses", "#" %></h5>
+    </section>
+    <hr/>
+    <section class="section">
     <%= button_to 'Post Your Own Problem', new_post_path, class: 'small button round', method: :get %>
     </section>
-    </div>
+
   </div>
   </div>
 
-  
+<div class="large-9 columns ">
 
-<div class="row">
 <% if notice %>
 <span class="label"><%= notice %></span>
 <% end %>
-</div>
-
 
 <%= yield %>
+</div>
+</div>
+
 
 
 

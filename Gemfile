@@ -13,6 +13,7 @@ gem 'pg'
 
 end
 
+gem 'figaro'
 # gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

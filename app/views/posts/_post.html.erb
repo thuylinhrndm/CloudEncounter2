@@ -41,10 +41,9 @@
         <% end %>
         </div>
         <% if post.answers.any? %>
-        <div class="row">
-        <h4><%= post.answers.count %> Answers</h4>
+         <h4><%= post.answers.count %> Answers</h4>
         <% post.answers.each do |answer| %>
-        
+        <div class="row">
           <div class="large-2 columns small-3">
             <img src="http://placehold.it/50x50&text=[img]"/>
           </div>  

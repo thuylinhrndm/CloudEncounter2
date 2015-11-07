@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+
   resources :answers
 
   get 'sessions/create'
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
  get 'auth/:provider/callback', to: 'sessions#create'
 
  get 'sign_out', to: 'sessions#destroy', as: 'sign_out'
+
+ post 'send', to: 'messages#email_message', as: 'mail'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
