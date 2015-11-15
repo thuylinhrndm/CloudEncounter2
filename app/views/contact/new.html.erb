@@ -4,7 +4,6 @@
 	<%= label_tag(:message) %>
 	<%= text_area_tag(:message) %>
 	<%= hidden_field_tag(:email, @consultant_email)%>
-	<%= hidden_field_tag(:user_name, @user_email)%>
 	<%= submit_tag "Send email", class: 'small button round' %>
 <% end %>
 
