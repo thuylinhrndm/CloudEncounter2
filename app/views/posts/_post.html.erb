@@ -5,11 +5,10 @@
         <p><strong><%= post.title %></strong></p>
         <p><%= post.created_at.strftime("%e %b %Y") %> </p>
 
-        <% if current_user%>
+        <% if current_user %>
             <% if post.user.nil? %>
             <%= "No User" %>
-            <% end %>
-            <% if current_user != post.user %>
+            <% elsif post.user != current_user %>
             <%= "Anonymous" %>
             <% else %>
             <%= post.user.name %>
