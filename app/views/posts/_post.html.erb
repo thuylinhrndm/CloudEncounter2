@@ -1,65 +1,77 @@
-
-    <div class="row">
-      <div class="large-12 columns">
+<div class="row">
+  <div class="large-12 columns">
       <div class="row">
+      <div class="large-12 columns">
         <p><strong><%= post.title %></strong></p>
         <p><%= post.created_at.strftime("%e %b %Y") %> </p>
 
         <% if current_user%>
-         <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
-          <% if post.user.nil? %>
+            <% if post.user.nil? %>
             <%= "No User" %>
-          <% else %>
+            <% end %>
+            <% if current_user != post.user %>
+            <%= "Anonymous" %>
+            <% else %>
             <%= post.user.name %>
-          <% end %>
-        <% end %>
+            <% end %>
         <% end %>
 
         </p> 
         <p> <%= post.description %></p>
+       
+
         <% if current_user %>
-        <% unless (current_user.role == 'user' && controller.action_name == 'index') %>
+        <% if current_user.role == 'user' %>
         <ul class="inline-list">
-          <% unless current_user.role == 'consultant' %>
           <li>
             <%= link_to 'Edit', edit_post_path(post) %>    
           </li>
-         
           <li>
           <%= button_to 'Destroy', post, method: :delete, class: "button small round" %>
           </li>
-        <% end %>
         </ul>
         <% end %>
         <% end %>
+        
+        <!-- Reply Box for Consultants only-->
         <% if current_user %>
         <% if current_user.role == 'consultant' %>
-        
-        <%= render partial: 'layouts/reply', locals: {post: post}%>
-        
+        <%= button_to "Write a Reply", post, method: :get, class: 'small button round' %>
         <% end %>
         <% end %>
-        </div>
+      </div>
+      </div>
+
         <% if post.answers.any? %>
-         <h4><%= post.answers.count %> Answers</h4>
-        <% post.answers.each do |answer| %>
-        <div class="row">
+          <h4><%= post.answers.count %> Answers</h4>
+          <% post.answers.order(created_at: :desc).each do |answer| %>
+          <div class="row">
           <div class="large-2 columns small-3">
-            <img src="http://placehold.it/50x50&text=[img]"/>
+              <% if answer.user %>
+                <% if current_user %>
+                  <% if current_user == answer.user %>
+                  <%= answer.user.name %>
+                  <% else %>
+                    <%= link_to "Email #{answer.user.name}", contact_new_path(user_name: post.user.name, consultant_email: answer.user.email) %>
+                    <% end %>  
+                    <% end %>
+              <% else %>
+                <%= link_to "No consultant", "#" %>
+              <% end %>
           </div>  
           <div class="large-10 columns">
             <p>
               <%= answer.description %>
             </p>
           </div>
-        </div>
+          </div>
           <br />
-          <% end %>
-          <% end %>
+      <% end %>
+      <% end %>
         <hr/>
     
-    </div>
   </div>
+</div>
   
 
 

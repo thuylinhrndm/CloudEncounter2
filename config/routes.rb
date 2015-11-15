@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+
+  get 'contact/new'
+
+  post 'contact/send_email'
+
   resources :messages
 
   resources :answers

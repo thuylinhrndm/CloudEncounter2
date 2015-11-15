@@ -18,6 +18,9 @@ class MessagesController < ApplicationController
   end
 
   def new
+    if params[:send_to]
+      @send_to = params[:send_to]
+    end
     @message = Message.new
     respond_with(@message)
   end
@@ -27,7 +30,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.save
+    
+    @message.save 
     respond_with(@message)
   end
 
