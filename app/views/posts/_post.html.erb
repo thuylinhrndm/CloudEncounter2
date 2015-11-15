@@ -51,7 +51,7 @@
                   <% if current_user == answer.user %>
                   <%= answer.user.name %>
                   <% else %>
-                    <%= link_to "Email #{answer.user.name}", contact_new_path(user_name: post.user.name, consultant_email: answer.user.email) %>
+                    <%= link_to "Email #{answer.user.name}", contact_new_path(consultant_email: answer.user.email) %>
                     <% end %>  
                     <% end %>
               <% else %>
