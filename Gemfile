@@ -28,6 +28,8 @@ gem 'foundation-rails', '5.4.3.1'
 
 gem 'faker'
 
+gem "google_custom_search" #Google search API
+
 gem "omniauth-google-oauth2" #Google API 
 
 gem 'omniauth-facebook', '1.4.0' #Facebook API for Login
