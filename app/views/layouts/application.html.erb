@@ -10,47 +10,48 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "default" 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
   </head>
 <body>
 <!--Navigation Bar-->
-
-  <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to "My Site", "#" %></h1>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
-    <section class="top-bar-section">
-    <ul class="left">
-      <li class="active"><%= link_to "All Posts", posts_path %></li>
-      <li class="active"><%= link_to "My Posts", my_posts_path %></li>
-      <li class="active"><%= link_to 'Post Your Own Problem', new_post_path, method: :get %></li>
-    </ul>
-
-    <ul class="right">
-    <% if current_user %>
-      <li class="active"></li>
-      <li class="active"><%= link_to "Welcome #{current_user.name}!", "#" %></li>
+<nav class="menu">
+  <h1 class="name"><i class="fi-widget"></i> TOP GEAR</a></h1>
+  <ul class="inline-list">
+    <li><%= link_to "All Posts", posts_path %></li>
+    <li class="active"><%= link_to "My Posts", my_posts_path %></li>
+    <li><%= link_to 'Post Problem', new_post_path, method: :get %></li>
+  </ul>
+  <ul class="inline-list hide-for-small-only account-action">
+  
+ <% if current_user %>
+      <li ></li>
+      <li><%= link_to "Welcome #{current_user.name}!", "#" %></li>
       <% if current_user.role %>
-      <li class="active"></li>
-      <li class="active"><%= content_tag(:a, current_user.role ? "#{current_user.role.capitalize}" : "") %></li>
+      <li></li>
+      <li><%= content_tag(:a, current_user.role ? "#{current_user.role.capitalize}" : "") %></li>
       <% end %>
-      <li class="active"></li>
-      <li class="active"><%= link_to "Sign Out", sign_out_path %></li>
-      <li class="active"></li>
+      <li></li>
+      <li><%= link_to "Sign Out", sign_out_path %></li>
+      <li></li>
     <% else %>
-      <li class="active"></li>
-      <li class="active"><%= link_to "Sign In with Google", "/auth/google_oauth2" %></li>
-      <li class="active"></li>
-      <li class="active"><%= link_to "Sign In with Facebook", "/auth/facebook" %></li>
-      <li class="active"></li>
+      <li></li>
+      <li><%= link_to "Sign In with Google", "/auth/google_oauth2" %></li>
+      <li></li>
+      <li><%= link_to "Sign In with Facebook", "/auth/facebook" %></li>
+      <li></li>
     <% end %>
-    </ul>
-        
-  </section>
+ </ul>
+
 </nav>
+
+
+
 <div class="row">
+<div class="small-12 columns">
+  
   <script>
   (function() {
     var cx = '007092960594765751254:ajyutvxvgwe';
@@ -62,12 +63,14 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-  </script>
-  <gcse:search></gcse:search>
+</script>
+<gcse:search></gcse:search>
+  
+</div>
 </div>
 
-<div class="row">
-<div class="large-12 columns"> 
+
+
 
   <% if notice %>
 <span class="label"><%= notice %></span>
@@ -75,8 +78,6 @@
 
 <%= yield %>
 
-</div>
-</div>
 
 
 
