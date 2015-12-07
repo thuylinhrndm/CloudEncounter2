@@ -7,6 +7,6 @@ class SearchController < ApplicationController
   end
 
   def test
-  	@results = GoogleCustomSearch.search("Problem")
+  	@results = GoogleCustomSearchApi.search("Problem")
   end
 end

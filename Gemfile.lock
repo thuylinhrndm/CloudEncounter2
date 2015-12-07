@@ -64,9 +64,14 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
-    google_custom_search (0.3.1)
+    google_custom_search_api (1.0.0)
+      addressable
+      httparty
     hashie (3.4.3)
     hike (1.2.3)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     httpauth (0.2.1)
     i18n (0.7.0)
     jbuilder (2.3.2)
@@ -84,6 +89,7 @@ GEM
     mime-types (2.99)
     minitest (5.8.3)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     oauth2 (0.6.1)
       faraday (~> 0.7)
@@ -180,7 +186,7 @@ DEPENDENCIES
   figaro
   foundation-rails (= 5.4.3.1)
   google-api-client (~> 0.7.0)
-  google_custom_search
+  google_custom_search_api
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook (= 1.4.0)

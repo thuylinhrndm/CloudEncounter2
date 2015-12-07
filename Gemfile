@@ -30,7 +30,7 @@ gem 'foundation-rails', '5.4.3.1'
 
 gem 'faker'
 
-gem "google_custom_search" #Google search API
+gem "google_custom_search_api" #Google search API
 
 gem "omniauth-google-oauth2" #Google API 
 
