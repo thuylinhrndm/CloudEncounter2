@@ -13,6 +13,8 @@ gem 'pg'
 
 end
 
+# gem 'google-search' #gem to google web search query strings
+
 gem 'figaro'
 # gem 'mysql2'
 # Use SCSS for stylesheets

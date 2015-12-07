@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
 
+  get 'search/test'
+
+  get 'search/new'
+
+  post 'search/results'
+
   get 'contact/new'
 
   post 'contact/send_email'
