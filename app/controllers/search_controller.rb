@@ -8,7 +8,5 @@ class SearchController < ApplicationController
 
   def test
   	@results = GoogleCustomSearch.search("Problem")
-  	puts @results
-  	@results
   end
 end
