@@ -1,0 +1,10 @@
+<p>These appointments have been booked already</p>
+<%= week_calendar events: appointments do |date, appointments| %>
+<%= date %>
+<br>
+<% appointments.each do |appt| %>
+<%= appt.time.strftime("%H:%M") %>
+
+<br>
+<% end %>
+<% end %>

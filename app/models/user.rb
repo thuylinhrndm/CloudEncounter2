@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :posts, dependent: :destroy
 	has_many :answers
+	has_many :appointments
+	has_many :clients, class_name: "Appointment", foreign_key: "consultant_id" 
 
 	ROLES = ["admin", "consultant", "user"]
 

@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
   
 
-  get 'search/test'
 
-  get 'search/new'
+  resources :appointments
 
-  post 'search/results'
+  get 'my_clients', to: 'appointments#my_clients', as: 'my_clients'
+
+  # get 'suggestions', to: 'posts#suggestions', as: 'suggestions'
+
+  get 'search', to: 'search#results', as: 'search'
 
   get 'contact/new'
 
   post 'contact/send_email'
+
+  get 'my_answers', to: 'answers#my_answers', as: 'my_answers'
 
   resources :messages
 

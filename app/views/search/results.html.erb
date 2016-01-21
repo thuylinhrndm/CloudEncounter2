@@ -1,2 +1,5 @@
-<h3>You searched for:</h3>
-<p><%= @result %></p>
+<% @results.items.each do |item| %>
+    <strong><%= item.title %></strong>
+    <p><%= item.link %></p>
+    <br> 
+  <% end %>

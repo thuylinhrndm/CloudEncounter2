@@ -20,9 +20,18 @@
 <nav class="menu">
   <h1 class="name"><i class="fi-widget"></i> CloudEncounter</a></h1>
   <ul class="inline-list">
-    <li><%= link_to "All Posts", posts_path %></li>
-    <li class="active"><%= link_to "My Posts", my_posts_path %></li>
-    <li><%= link_to 'Post Problem', new_post_path, method: :get %></li>
+    <%= content_tag(:li, link_to("All Posts", posts_path), class: list_class(posts_path)) %>
+    <% if current_user && current_user.role == "consultant" %>
+    <%= content_tag(:li, link_to("My Answers", my_answers_path), class: list_class(my_answers_path)) %>
+     <%= content_tag(:li, link_to("My Clients", my_clients_path(consultant_id: current_user.id)), class: list_class(my_clients_path)) %>
+    <% else %>
+    <%= content_tag(:li, link_to("My Posts", my_posts_path), class: list_class(my_posts_path)) %>
+    <% end %>
+<% unless current_user && current_user.role =="consultant"%>
+  <%= content_tag(:li, link_to("Post Problem", new_post_path, method: :get), class: list_class(new_post_path)) %>
+<% end %>
+    
+
   </ul>
   <ul class="inline-list hide-for-small-only account-action">
   

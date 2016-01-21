@@ -1,9 +1,10 @@
+
 class PostsController < ApplicationController
   before_action :check_current_user_is_signed_in, except: [:index]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :suggestions]
 
   def my_posts
-    @posts = Post.where(user_id: current_user.id)
+    @posts = Post.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   # GET /posts
@@ -16,6 +17,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
    @answer = Answer.new
+   @results = GoogleCustomSearchApi.search(@post.description.to_s)
   end
 
   # GET /posts/new
@@ -34,7 +36,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }

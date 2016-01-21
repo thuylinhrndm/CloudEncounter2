@@ -2,10 +2,10 @@
 <div class="large-12 columns">
 <p id="notice"><%= notice %></p>
 <div class="form-style-10">
-<p>
+<!--<p>
   <strong>Title:</strong>
   <%= @post.title %>
-</p>
+</p>-->
 
 <p>
   <strong>Description:</strong>
@@ -44,28 +44,17 @@
 
 <% end %>
 
-<div></div>
- <script>
-  (function() {
-    var cx = '007092960594765751254:ajyutvxvgwe';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:searchresults-only></gcse:searchresults-only>
-<div></div>
-
-
-
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back to My Posts', my_posts_path %> |
 <%= link_to 'Back to All Posts', posts_path %>
 
 </div>
+<h3>Suggestions</h3>
+<% @results.items.each do |item| %>
+    <div>
+    <strong><%= link_to item.title, item.link %></strong><br>
+    <p><%= item.link %></p>
+    </div>
+  <% end %>
 </div>
 </div>

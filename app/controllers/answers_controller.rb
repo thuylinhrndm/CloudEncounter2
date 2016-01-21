@@ -1,7 +1,10 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
   
-
+  def my_answers
+    @answers = Answer.where(user_id: current_user.id)
+    @problem = "Hellod kjsdhfkjhsdfkjds lksjdflkjlsdfjvlkj slkdfjslkjdflknemn,mnsdf hh"
+  end
   # GET /answers
   # GET /answers.json
   def index
@@ -73,6 +76,10 @@ class AnswersController < ApplicationController
     def set_answer
       @answer = Answer.find(params[:id])
     end
+
+     def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
