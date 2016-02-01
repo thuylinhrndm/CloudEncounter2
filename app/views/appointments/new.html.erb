@@ -1,16 +1,16 @@
 <div class="row">
 <div class="large-4 columns">
 <div class="form-style-8">
-<h1 style="text-align: center">New appointment</h1>
+<h1 style="text-align: center; color: #2b92ba">New appointment</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', appointments_path %>
+<%= link_to image_tag("Back.png", :size => "40x40", :crop => :fill), appointments_path %>
 </div>
 </div>
 <div class="large-8 columns">
 <div class="form-style-8">
-<h1 style="text-align: center">Calendar</h1>
+<h1 style="text-align: center; color: #2b92ba">Calendar</h1>
 <%= render partial: 'my_calendars/user_calendar', locals: {appointments: @appointments} %>
 </div>
 </div>

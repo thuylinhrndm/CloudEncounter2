@@ -24,7 +24,7 @@
         <% if current_user.role == 'user' %>
         <ul class="inline-list">
           <li>
-            <%= link_to 'Edit', edit_post_path(post) %>    
+            <%= link_to image_tag("file_edit.png", :size => "40x40", :crop => :fill), edit_post_path(post) %>    
           </li>
           <li>
           <%= button_to 'Destroy', post, method: :delete, class: "button small round" %>
@@ -45,25 +45,30 @@
           <div class="section"><span><%= post.answers.count %></span> Answers</div>
           <% post.answers.order(created_at: :desc).each do |answer| %>
 
+
           <!--Answer box  -->
       <div class="row">
-          <div class="large-2 columns small-3">
+          <div class="large-1 columns small-3">
               <% if answer.user %>
                 <% if current_user %>
                   <% if current_user == answer.user %>
                   <%= answer.user.name %>
                   <% else %>
-                    <%= link_to '<i class="fi-mail"></i>'.html_safe, contact_new_path(consultant_email: answer.user.email), alt: "Email Consultant" %><br>
-                    <%= link_to '<i class="fi-calendar"></i>'.html_safe, new_appointment_path(consultant_id: answer.user.id) %>
+                    <!--<%= link_to '<i class="fi-mail"></i>'.html_safe, contact_new_path(consultant_email: answer.user.email), alt: "Email Consultant" %>-->
+                    <%= link_to image_tag("message.png", :size => "45x45", :crop => :fill), contact_new_path(consultant_email: answer.user.email), alt: "Email Consultant" %>
+                     <%= link_to image_tag("calendar.png", :size => "45x45", :crop => :fill), new_appointment_path(consultant_id: answer.user.id) %>  <br>
+                   
+                    <!--<%= link_to '<i class="fi-calendar"></i>'.html_safe, new_appointment_path(consultant_id: answer.user.id) %>-->
                     <% end %>  
                     <% end %>
               <% else %>
                 <%= link_to "No consultant", "#" %>
               <% end %>
           </div>  
-          <div class="large-10 columns">
+          <div class="large-11 columns">
             <div class="inner-wrap">
-              <%= answer.description %>
+              <p><%= answer.user.name %> - <%= answer.created_at.strftime("%e %b %Y") %><br>
+              <p><%= answer.description %></p>
             </div>
           </div>
           </div>
