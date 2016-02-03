@@ -55,17 +55,32 @@
 
 
  <!--Show suggestions following user's problem   -->
-
+<% if current_user.role == 'user' %>
 <div class="form-style-10">
 <h2 style="text-align: center; color:#257C9E">Suggestions</h2>
 <% @results.items.each do |item| %>
     <div class="inner-wrap">
-    <strong><%= link_to item.title, item.link %></strong><br>
-    <p><%= item.link %></p>
-    </div>
-    <hr>
+     <h4><%= link_to item.title, item.link , {:style=>'color:blue;', :class => "css_class"} %></h4>
+      <div style="color:green"><%= item.link %></div>
+          <div>
+            <% if item['pagemap'] &&
+                  item['pagemap']['cse_thumbnail'] &&
+                  img = item.pagemap.cse_thumbnail.first %>
+              <div class="event-date">
+                <%= image_tag(img.src, width: '100px') %>
+              </div>
+             <div class="event-desc">
+                <%= item.htmlSnippet.html_safe %>
+             </div>
+               <% else %>
+              <%= item.htmlSnippet.html_safe %>
+            <% end %>
+          </div>
+       </div>
+   
   <% end %>
   </div>
+  <% end %>
 
 </div>
 </div>
