@@ -10,7 +10,7 @@
     <ul class="inline-list">
       <li><%= link_to 'Show', answer %></li>
       <li><%= link_to 'Edit', edit_answer_path(answer) %></li>
-      <li><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <li><%= button_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     </ul>
   <hr/>
 <% end %>

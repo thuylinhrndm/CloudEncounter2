@@ -5,6 +5,7 @@ class AppointmentsController < ApplicationController
 
   def my_clients
     @appointments = Appointment.where('consultant_id = ?', params[:consultant_id]).order(time: :asc)
+    
   end
 
   def index
