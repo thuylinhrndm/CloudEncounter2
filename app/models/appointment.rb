@@ -12,5 +12,10 @@ belongs_to :consultant, class_name: "User"
   def start_time
   	time
   end
+ 
+ # get all the appointments for the following day
+ def self.following_day_appointments
+  all.where("time >= ?", (Time.now + 3.hours))
+ end
 
 end

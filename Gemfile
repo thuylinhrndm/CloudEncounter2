@@ -25,6 +25,8 @@ gem 'thin'
 gem "cis_rails_chat"
 
 
+# using whenever gem to handle reminder emails
+gem 'whenever', require: false
 
 # simple calendar gem
 gem "simple_calendar"
