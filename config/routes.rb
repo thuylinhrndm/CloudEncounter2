@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
+  resources :saved_links, only: [:index]
 
+  get 'update_link', to: 'saved_links#update_link', as: 'update_link'
+  
+  get 'posts/test'
+
+  get 'posts/test_yaml'
 
   resources :appointments
 
@@ -13,6 +19,13 @@ Rails.application.routes.draw do
   get 'contact/new'
 
   post 'contact/send_email'
+
+  resources :conversations do
+    resources :chatmessages
+  end
+
+  #IP message token
+  post 'tokens' => "tokens#create"
 
   get 'my_answers', to: 'answers#my_answers', as: 'my_answers'
 

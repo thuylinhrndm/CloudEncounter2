@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
 
     <title><%= content_for?(:title) ? yield(:title) : "Encounter2" %></title>
 
@@ -10,6 +11,8 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "default" 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= javascript_include_tag '//media.twiliocdn.com/sdk/rtc/js/ip-messaging/v0.8/twilio-ip-messaging.min.js' %> 
+ 
 
 
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">

@@ -1,0 +1,7 @@
+<div>
+	<h3>Results with partial and object</h3>
+	<br>
+	<%= @result_list.each do |result| %>
+	<%= render partial: "results/result", locals: {result: result}  %>
+	<% end %>
+</div>

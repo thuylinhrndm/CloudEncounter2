@@ -1,4 +1,7 @@
+
+
 source 'https://rubygems.org'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -12,6 +15,16 @@ gem 'pg'
  gem 'rails_12factor'
 
 end
+#IP message
+gem 'twilio-ruby'
+gem 'envyable'
+
+#chat faye
+gem 'private_pub'
+gem 'thin'
+gem "cis_rails_chat"
+
+
 
 # simple calendar gem
 gem "simple_calendar"

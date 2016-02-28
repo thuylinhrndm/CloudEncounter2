@@ -1,0 +1,5 @@
+<p>Title: <%= result.title %></p>
+<p>Link: <%= link_to result.link_url.to_s, update_link_path(title: result.title.to_s, link_url: result.link_url.to_s) %></p>
+<p>Click Count: <%= result.click_count %></p>
+<hr>
+<br>

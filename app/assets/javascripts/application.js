@@ -14,7 +14,12 @@
 //= require jquery.js
 //= require jquery_ujs
 //= require foundation
+//= require chat
 //= require turbolinks
 //= require_tree .
+//= require private_pub
+//= require cis_rails_chat
+
 
 $(function(){ $(document).foundation(); });
+$.post('/tokens', function(token) { console.log(token) })

@@ -4,12 +4,12 @@ class AppointmentsController < ApplicationController
   respond_to :html
 
   def my_clients
-    @appointments = Appointment.where('consultant_id = ?', params[:consultant_id]).order(time: :asc)
+    @appointments = Appointment.where('consultant_id = ?', params[:consultant_id]).where('time >= ?', Time.now).order(time: :asc)
     
   end
 
   def index
-    @appointments = Appointment.where('time > ?', Time.now).order(time: :asc)
+    @appointments = Appointment.where('time >= ?', Time.now).order(time: :asc)
     respond_with(@appointments)
     if @appointments.length == 0
       flash[:alert] = "You have no appointments. Create one now to get started."

@@ -1,4 +1,5 @@
-
+require 'data'
+require 'result'
 class PostsController < ApplicationController
   before_action :check_current_user_is_signed_in, except: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :suggestions]
@@ -18,6 +19,16 @@ class PostsController < ApplicationController
   def show
    @answer = Answer.new
    @results = GoogleCustomSearchApi.search(@post.description.to_s)
+  @result_list = Data.parse(@results).sort_by {|object| object.click_count }.reverse
+  end
+
+  def test_yaml
+    @results = GoogleCustomSearchApi.search("Viet Nam holiday")
+  end
+
+  def test
+    @results = GoogleCustomSearchApi.search("Raspberry Pi")
+    @result_list = Data.parse(@results).sort_by {|object| object.click_count }.reverse
   end
 
   # GET /posts/new

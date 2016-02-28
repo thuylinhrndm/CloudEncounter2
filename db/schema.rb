@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121191248) do
+ActiveRecord::Schema.define(version: 20160228150916) do
 
   create_table "answers", force: true do |t|
     t.text     "description"
@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(version: 20160121191248) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "consultant_id"
+  end
+
+  create_table "chat_messages", force: true do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chat_messages", ["conversation_id"], name: "index_chat_messages_on_conversation_id"
+  add_index "chat_messages", ["user_id"], name: "index_chat_messages_on_user_id"
+
+  create_table "conversations", force: true do |t|
+    t.integer  "snder_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|
@@ -52,6 +70,14 @@ ActiveRecord::Schema.define(version: 20160121191248) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "saved_links", force: true do |t|
+    t.string   "title"
+    t.string   "link_url"
+    t.integer  "click_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

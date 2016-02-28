@@ -54,11 +54,12 @@
                   <% if current_user == answer.user %>
                   <%= answer.user.name %>
                   <% else %>
-                    <!--<%= link_to '<i class="fi-mail"></i>'.html_safe, contact_new_path(consultant_email: answer.user.email), alt: "Email Consultant" %>-->
+                   
                     <%= link_to image_tag("message.png", :size => "45x45", :crop => :fill), contact_new_path(consultant_email: answer.user.email), alt: "Email Consultant" %>
                      <%= link_to image_tag("calendar.png", :size => "45x45", :crop => :fill), new_appointment_path(consultant_id: answer.user.id) %>  <br>
                    
-                    <!--<%= link_to '<i class="fi-calendar"></i>'.html_safe, new_appointment_path(consultant_id: answer.user.id) %>-->
+                   
+                    
                     <% end %>  
                     <% end %>
               <% else %>
