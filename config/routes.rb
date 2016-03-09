@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  post 'update_rating', to: 'saved_links#update_rating', as: 'update_rating'
+  
   resources :saved_links, only: [:index]
 
   get 'update_link', to: 'saved_links#update_link', as: 'update_link'

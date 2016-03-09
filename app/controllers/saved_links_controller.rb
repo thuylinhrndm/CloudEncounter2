@@ -15,4 +15,11 @@ class SavedLinksController < ApplicationController
   def index
   	@saved_links = SavedLink.all
   end
+  
+  def update_rating
+  	@saved_link = SavedLink.find_or_create_by(link_url: params[:link_url].to_s)
+    @saved_link.ratings.build(rating: params[:rating].to_i)
+    @saved_link.save
+   redirect_to request.referrer, notice: "Thank you for your feedback"
+  end
 end
