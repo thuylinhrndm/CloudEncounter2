@@ -75,6 +75,9 @@
 
 <% if Rails.env.development? %>
 <p>Development mode</p>
+<% if current_user %>
+<p>This link sends a reminder email: <%= button_to 'Click me', reminder_path(user_id: current_user.id, time: (Time.now + 1.day).strftime("%H:%M")) %></p>
+<% end %>
 <% end %>
 </body>
 </html>

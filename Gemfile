@@ -11,6 +11,8 @@ gem 'sqlite3', group: :development
 
 gem 'whenever'
 
+gem 'figaro', group: :development
+
 group :production, :staging do
 gem 'pg'
  gem 'rails_12factor'

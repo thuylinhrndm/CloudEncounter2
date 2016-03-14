@@ -4,7 +4,6 @@
 # http://en.wikipedia.org/wiki/Cron
 
 # Example:
-#
 # set :output, "/path/to/my/cron_log.log"
 #
 # every 2.hours do

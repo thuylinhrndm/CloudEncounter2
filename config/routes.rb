@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'reminder', to: 'emails#reminder', as: 'reminder'
   
   post 'update_rating', to: 'saved_links#update_rating', as: 'update_rating'
   
