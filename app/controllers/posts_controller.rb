@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def show
    @answer = Answer.new
    @results = GoogleCustomSearchApi.search(@post.description.to_s)
-  @result_list = Data.parse(@results).sort_by {|object| object.click_count }.reverse
+  @result_list = Data.parse(@results)
   end
 
   def test_yaml
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def test
     @results = GoogleCustomSearchApi.search("Raspberry Pi")
-    @result_list = Data.parse(@results).sort_by {|object| object.click_count }.reverse
+    @result_list = Data.parse(@results)
   end
 
   # GET /posts/new

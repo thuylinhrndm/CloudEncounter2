@@ -3,7 +3,7 @@ class CreateSavedLinks < ActiveRecord::Migration
     create_table :saved_links do |t|
       t.string :title
       t.string :link_url
-      t.integer :click_count
+      t.integer :click_count, default: 0
 
       t.timestamps
     end

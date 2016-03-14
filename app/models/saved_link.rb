@@ -1,9 +1,11 @@
 class SavedLink < ActiveRecord::Base
     has_many :ratings
     
+    def sum_of_ratings
+        ratings.pluck(:rating).inject(0) {|sum, number| sum += number}
+    end
+    
     def average_rating
-        total_amount = ratings.inject(0) {|sum, num| sum += num}
-        total_items = ratings.count
-        total_amount/total_items.to_f
+        sum_of_ratings/ratings.count.to_d
     end
 end
