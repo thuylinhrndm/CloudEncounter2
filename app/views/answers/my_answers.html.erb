@@ -3,12 +3,12 @@
  <h2 style="text-align: center">My Answers</h2> 
  <div class="form-style-10">
 
- 	<% @answers.order(created_at: :desc).each do |answer| %>
+ 	<% @answers.each do |answer| %>
    <h1><%= answer.user.name %> | <%= answer.created_at.strftime("%e %b %Y") %> </h1>
     <div class="inner-wrap"> Answer: <%= answer.description %></div>
     
 
-    <%= link_to "#{truncate(@problem, length: 20)}"%>
+    <%= link_to "#{truncate(answer.post.description, length: 80)}", post_path(answer.post) %>
    
 
   	<hr/>

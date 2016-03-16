@@ -9,6 +9,7 @@
             <th>Email</th>
             <th>Day</th>
             <th>Time</th>
+            <th></th>
             
           </tr>
       </thead>
@@ -17,12 +18,7 @@
           <% @appointments.each do |appointment| %>
           <tr>
           <td><%= appointment.user.name %></td>
-          <td><%= appointment.email %>
-         
-              <% if Rails.env.development? %>
-              <p><%= button_to 'Send Reminder', reminder_path(user_id: current_user.id,time:(appointment.time).strftime("%H:%M")) %></p>
-                <% end %>
-          </td>
+          <td><%= appointment.email %></td>
           <td><%= appointment.time.strftime("%d %b %y") %></td>
           <td><%= appointment.time.strftime("%H:%M") %></td>
           <td><%= link_to 'Show', appointment %> | <%= link_to 'Edit', edit_appointment_path(appointment) %>|<%= button_to 'Destroy', appointment, method: :delete, class: 'small button round', data: { confirm: 'Are you sure?'} %></td>

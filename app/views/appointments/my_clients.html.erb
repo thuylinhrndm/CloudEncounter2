@@ -1,5 +1,5 @@
 <div class="row">
-<div class="small-5 columns">
+<div class="small-6 columns">
   <div class="form-style-10">
     <h1 style="text-align: center">Listing client appointments</h1>
         <table class="table table-striped">
@@ -9,7 +9,7 @@
             <th>Email</th>
             <th>Day</th>
             <th>Time</th>
-            
+            <th></th>
           </tr>
       </thead>
 
@@ -17,9 +17,12 @@
           <% @appointments.each do |appointment| %>
           <tr>
           <td><%= appointment.user.name %></td>
-          <td><%= truncate(appointment.email, length: 12) %></td>
+          <td>
+              <p><%= truncate(appointment.email, length: 12) %></p>
+          </td>
           <td><%= appointment.time.strftime("%d %b %y") %></td>
           <td><%= appointment.time.strftime("%H:%M") %></td>
+          <td><%= button_to 'Send Reminder', reminder_path(user_id: appointment.user.id, time:(appointment.time).strftime("%H:%M"), consultant_id: appointment.consultant.id) %></td>
           <!--<td><%= link_to 'Show', appointment %></td>
           <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
           <td><%= button_to 'Destroy', appointment, method: :delete, class: 'small button round', data: { confirm: 'Are you sure?'} %></td>-->
@@ -34,7 +37,7 @@
   
  </div>
  </div>
- <div class="small-7 columns">
+ <div class="small-6 columns">
  <div class="form-style-10">
    <h1 style="text-align: center">Monthly Calendar</h1>
    <%= month_calendar(events: @appointments) do |date, appointments| %>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :appointments
 
-  get 'my_clients', to: 'appointments#my_clients', as: 'my_clients'
+  get "my_clients", to: 'appointments#my_clients', as: 'my_clients'
   get 'my_appointments', to: 'appointments#my_appointments', as: 'my_appointments'
 
   # get 'suggestions', to: 'posts#suggestions', as: 'suggestions'

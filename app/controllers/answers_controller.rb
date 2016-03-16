@@ -2,8 +2,7 @@ class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
   
   def my_answers
-    @answers = Answer.where(user_id: current_user.id)
-    @problem = "Hellod kjsdhfkjhsdfkjds lksjdflkjlsdfjvlkj slkdfjslkjdflknemn,mnsdf hh"
+    @answers = Answer.where(user_id: current_user.id).order(created_at: :desc)
   end
   # GET /answers
   # GET /answers.json

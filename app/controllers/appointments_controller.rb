@@ -1,10 +1,12 @@
 class AppointmentsController < ApplicationController
+  # include CurrentUser
+  before_action :set_current_user
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def my_clients
-    @appointments = Appointment.where('consultant_id = ?', params[:consultant_id]).where('time >= ?', Time.now).order(time: :asc)
+    @appointments = Appointment.where('consultant_id = ?', current_user.id).where('time >= ?', Time.now).order(time: :asc)
     
   end
   
@@ -33,7 +35,6 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    
     @appointment = Appointment.new(appointment_params)
     @appointment.save
     respond_with(@appointment)
