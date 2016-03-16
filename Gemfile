@@ -12,7 +12,7 @@ gem 'sqlite3', group: :development
 # gem 'whenever'
 
 gem 'daemons'
-gem 'clockwork'
+gem 'clockwork', require: false
 
 gem 'figaro', group: :development
 
