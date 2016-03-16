@@ -7,6 +7,10 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.where('consultant_id = ?', params[:consultant_id]).where('time >= ?', Time.now).order(time: :asc)
     
   end
+  
+  def my_appointments
+     @appointments  = Appointment.where(user_id: current_user.id)
+  end
 
   def index
     @appointments = Appointment.where('time >= ?', Time.now).order(time: :asc)
