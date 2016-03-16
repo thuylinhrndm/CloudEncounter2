@@ -9,7 +9,10 @@ gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 
-gem 'whenever'
+# gem 'whenever'
+
+gem 'daemons'
+gem 'clockwork'
 
 gem 'figaro', group: :development
 
@@ -32,8 +35,6 @@ gem "cis_rails_chat"
 
 # simple calendar gem
 gem "simple_calendar"
-
-gem 'figaro'
 # gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

@@ -7,4 +7,9 @@ class Reminder < ActionMailer::Base
     @message = "Hi #{user.name},\nYou have an appointment tomorrow at #{appointment_hour_time} with #{consultant.name}. \n All the best,\nCloudEncounter" 
     mail(to: user.email, subject: "Reminder of your appointment tomorrow")
    end
+   
+   def tester_email(email = "rndmukireland@gmail.com")
+    @message = "Hello World!"
+    mail(to: email, subject: "Hello from Cloud9!")
+   end
 end
