@@ -20,6 +20,7 @@ class PostsController < ApplicationController
    @answer = Answer.new
    @results = GoogleCustomSearchApi.search(@post.description.to_s)
   @result_list = Data.parse(@results)
+  @result_list = Data.sort(@result_list)
   end
 
   def test_yaml

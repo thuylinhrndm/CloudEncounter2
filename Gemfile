@@ -15,8 +15,7 @@ gem 'figaro', group: :development
 
 group :production, :staging do
 gem 'pg'
- gem 'rails_12factor'
-
+gem 'rails_12factor'
 end
 #IP message
 gem 'twilio-ruby'
@@ -29,7 +28,7 @@ gem "cis_rails_chat"
 
 
 # using whenever gem to handle reminder emails
-gem 'whenever', require: false
+# gem 'whenever', require: false
 
 # simple calendar gem
 gem "simple_calendar"

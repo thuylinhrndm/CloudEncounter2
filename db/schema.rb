@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20160309180132) do
   create_table "saved_links", force: true do |t|
     t.string   "title"
     t.string   "link_url"
-    t.integer  "click_count"
+    t.integer  "click_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
