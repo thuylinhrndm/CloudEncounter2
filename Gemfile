@@ -34,7 +34,7 @@ gem "cis_rails_chat"
 # gem 'whenever', require: false
 
 # simple calendar gem
-gem "simple_calendar"
+gem "simple_calendar" #transferred to the new app
 # gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -45,15 +45,15 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
-gem 'foundation-rails', '5.4.3.1'
+gem 'foundation-rails', '5.4.3.1' #transferred to new app
 
-gem 'faker'
+gem 'faker'             #transferred to new app
 
-gem "google_custom_search_api" #Google search API
+gem "google_custom_search_api" #Google search API #transferred to new app
 
-gem "omniauth-google-oauth2" #Google API 
+gem "omniauth-google-oauth2" #Google API #transferred to new app
 
-gem 'omniauth-facebook', '1.4.0' #Facebook API for Login
+gem 'omniauth-facebook', '1.4.0' #Facebook API for Login #transferred to new app
 
 gem 'responders'
 
@@ -67,7 +67,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'google-search'
+gem 'google-search'         # transferred to new project
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
